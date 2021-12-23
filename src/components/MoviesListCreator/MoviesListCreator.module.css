@@ -1,0 +1,12 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.item {
+  outline: 1px solid red;
+}
+
+.genres {
+  display: flex;
+  flex-direction: column;
+}
