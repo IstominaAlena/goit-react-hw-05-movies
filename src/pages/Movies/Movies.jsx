@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import SectionWrapper from "../../components/SectionWrapper";
 import SearchForm from "../../components/SearchForm";
 import MoviesListCreator from "../../components/MoviesListCreator";
 import Button from "../../components/Button";
+import Error from "../../components/Error";
 
 import { movieAPI } from "../../servicesAPI/movieAPI";
 
@@ -16,9 +18,10 @@ const Movies = () => {
     status: "idle",
     movies: [],
     page: 1,
+    totalPages: 1,
   });
 
-  const { error, status, movies, page } = state;
+  const { error, status, movies, page, totalPages } = state;
 
   const history = useHistory();
   const location = useLocation();
@@ -31,12 +34,23 @@ const Movies = () => {
       });
       try {
         const result = await movieAPI.getSerchedMovies(query, page);
+        if (!result.data.results.length) {
+          toast.error("Sorry we can't find anything");
+        }
+        // setState((prev) => ({
+        //   ...state,
+        //   movies: [...prev.movies, ...result.data.results],
+        //   page: result.data.page,
+        //   status: "resolved",
+        //   totalPages: result.data.total_pages,
+        // }));
 
         setState({
           ...state,
           movies: [...result.data.results],
           page: result.data.page,
           status: "resolved",
+          totalPages: result.data.total_pages,
         });
       } catch (error) {
         setState({
@@ -69,19 +83,27 @@ const Movies = () => {
       status: "pending",
     }));
   }
-
   return (
     <SectionWrapper>
       <SearchForm onSubmit={formSubmitHandler} />
+      {status === "pending" && <h1>Loading...</h1>}
 
-      <MoviesListCreator array={movies} />
+      {status === "rejected" && <Error error={error} />}
 
-      <Button
-        type="button"
-        text="Load more"
-        onClick={handleClick}
-        className={"load-more"}
-      />
+      {movies.length > 0 && <MoviesListCreator array={movies} />}
+      {movies.length > 0 && page < totalPages && status !== "pending" && (
+        <Button
+          type="button"
+          text="Load more"
+          onClick={handleClick}
+          className={"load-more"}
+        />
+      )}
+      {page === totalPages && status === "resolved" && (
+        <p className="text">
+          We're sorry, but you've reached the end of search results.
+        </p>
+      )}
     </SectionWrapper>
   );
 };

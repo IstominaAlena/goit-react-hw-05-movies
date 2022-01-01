@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import SectionWrapper from "../../components/SectionWrapper";
 import CastListCreator from "../../components/CastListCreator";
+import Error from "../../components/Error";
 
 import { movieAPI } from "../../servicesAPI/movieAPI";
 
@@ -46,6 +47,9 @@ const Cast = () => {
 
   return (
     <SectionWrapper>
+      {status === "pending" && <h1>Loading...</h1>}
+
+      {status === "rejected" && <Error error={error} />}
       <CastListCreator array={cast} />
     </SectionWrapper>
   );

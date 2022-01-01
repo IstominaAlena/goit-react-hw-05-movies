@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import {
   useParams,
   NavLink,
-  Switch,
-  Route,
   useRouteMatch,
+  useHistory,
+  useLocation,
 } from "react-router-dom";
 
 import SectionWrapper from "../../components/SectionWrapper";
 import Movie from "../../components/Movie";
-import Cast from "../../pages/Cast";
-import Reviews from "../../pages/Reviews";
+import RoutsForMovie from "../../components/Routs/RoutsForMovie";
+import Button from "../../components/Button";
 
 import { movieAPI } from "../../servicesAPI/movieAPI";
 
@@ -27,6 +27,16 @@ const MovieDetails = () => {
 
   const { movieId } = useParams();
   const { url } = useRouteMatch();
+  const history = useHistory();
+  const location = useLocation();
+
+  function goBack() {
+    if (location.state?.from) {
+      history.push(location.state.from);
+      return;
+    }
+    history.push("/movies");
+  }
 
   useEffect(() => {
     async function showMovie() {
@@ -54,26 +64,34 @@ const MovieDetails = () => {
 
   return (
     <>
+      {status === "pending" && <h1>Loading...</h1>}
+
+      <Button type="button" text="Go back" onClick={goBack} />
+
       <SectionWrapper>
         <Movie movie={movie} />
       </SectionWrapper>
 
       <SectionWrapper>
-        <NavLink to={`${url}/cast`}>Cast</NavLink>
-        <NavLink to={`${url}/reviews`}>Reviews</NavLink>
+        <NavLink
+          to={{
+            pathname: `${url}/cast`,
+            state: { from: location.state?.from },
+          }}
+        >
+          Cast
+        </NavLink>
+        <NavLink
+          to={{
+            pathname: `${url}/reviews`,
+            state: { from: location.state?.from },
+          }}
+        >
+          Reviews
+        </NavLink>
       </SectionWrapper>
 
-      <SectionWrapper>
-        <Switch>
-          <Route path="/movies/:movieId/cast">
-            <Cast />
-          </Route>
-
-          <Route path="/movies/:movieId/reviews">
-            <Reviews />
-          </Route>
-        </Switch>
-      </SectionWrapper>
+      <RoutsForMovie />
     </>
   );
 };

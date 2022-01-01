@@ -1,5 +1,5 @@
 import { useState, useEffect, memo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CustomPlaceholder } from "react-placeholder-image";
 
 import PropTypes from "prop-types";
@@ -9,7 +9,7 @@ import s from "./MoviesListCreator.module.css";
 
 const MoviesListCreator = ({ array }) => {
   const [genres, setGenres] = useState([]);
-
+  const location = useLocation();
   useEffect(() => {
     async function getMovieGenres() {
       try {
@@ -32,7 +32,13 @@ const MoviesListCreator = ({ array }) => {
 
     return (
       <li key={id} className={s.item}>
-        <Link to={`/movies/${id}`} className={s.link}>
+        <Link
+          to={{
+            pathname: `/movies/${id}`,
+            state: { from: location },
+          }}
+          className={s.link}
+        >
           {poster_path ? (
             <img src={imgUrl} alt={title} className={s.poster} />
           ) : (

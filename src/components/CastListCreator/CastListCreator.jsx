@@ -1,4 +1,6 @@
 import { memo } from "react";
+import { CustomPlaceholder } from "react-placeholder-image";
+
 import PropTypes from "prop-types";
 
 import { movieAPI } from "../../servicesAPI/movieAPI";
@@ -10,7 +12,11 @@ const CastListCreator = ({ array }) => {
     const imgUrl = movieAPI.getPoster(200, profile_path);
     return (
       <li key={id}>
-        <img src={imgUrl} alt={name} className={s.profile} />
+        {profile_path ? (
+          <img src={imgUrl} alt={name} className={s.profile} />
+        ) : (
+          <CustomPlaceholder width={200} height={300} text="Photo not found" />
+        )}
         <h2>{name}</h2>
         <p>{character}</p>
       </li>

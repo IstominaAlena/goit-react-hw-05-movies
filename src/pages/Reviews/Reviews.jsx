@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import SectionWrapper from "../../components/SectionWrapper";
 import ReviewsListCreator from "../../components/ReviewsListCreator";
+import Error from "../../components/Error";
 
 import PropTypes from "prop-types";
 import { movieAPI } from "../../servicesAPI/movieAPI";
@@ -25,7 +26,6 @@ const Reviews = () => {
       });
       try {
         const result = await movieAPI.getReviewsById(movieId);
-        console.log(result.data.results);
         setState({
           ...state,
           reviews: [...result.data.results],
@@ -45,7 +45,14 @@ const Reviews = () => {
 
   return (
     <SectionWrapper>
-      <ReviewsListCreator array={reviews} />
+      {status === "pending" && <h1>Loading...</h1>}
+
+      {status === "rejected" && <Error error={error} />}
+      {reviews.length > 0 ? (
+        <ReviewsListCreator array={reviews} />
+      ) : (
+        <p className={s.text}>Sorry, there isn't any reviews</p>
+      )}
     </SectionWrapper>
   );
 };
