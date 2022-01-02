@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { IconContext } from "react-icons";
+import { BsFillEyeFill } from "react-icons/bs";
 
+import Title from "../../components/Title";
 import Input from "../Input";
 import Button from "../Button";
 
@@ -26,16 +29,29 @@ const SearchForm = (props) => {
 
   return (
     <form className={s.form} onSubmit={onFormSubmit}>
+      <Title title={"Search movie"} />
       <Input
         value={query}
         onChange={onInputChange}
         type="text"
-        placeholderValue="Search images and photos"
         autoFocus={true}
         autoComplete="off"
       />
 
-      <Button type="submit" text={"Search"} className="search" />
+      <Button
+        type="submit"
+        text={
+          <IconContext.Provider
+            value={{
+              color: "#0abab5",
+              size: "20px",
+            }}
+          >
+            <BsFillEyeFill />
+          </IconContext.Provider>
+        }
+        className="search"
+      />
     </form>
   );
 };

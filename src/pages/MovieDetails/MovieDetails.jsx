@@ -6,8 +6,9 @@ import {
   useHistory,
   useLocation,
 } from "react-router-dom";
+import { IconContext } from "react-icons";
+import { IoArrowUndoOutline } from "react-icons/io5";
 
-import SectionWrapper from "../../components/SectionWrapper";
 import Movie from "../../components/Movie";
 import RoutsForMovie from "../../components/Routs/RoutsForMovie";
 import Button from "../../components/Button";
@@ -65,15 +66,30 @@ const MovieDetails = () => {
   return (
     <>
       {status === "pending" && <h1>Loading...</h1>}
+      <div className={s.container}>
+        <Button
+          type="button"
+          text={
+            <IconContext.Provider
+              value={{
+                color: "#0abab5",
+                size: "20px",
+              }}
+            >
+              <IoArrowUndoOutline />
+            </IconContext.Provider>
+          }
+          onClick={goBack}
+          className={"go-back"}
+        />
 
-      <Button type="button" text="Go back" onClick={goBack} />
-
-      <SectionWrapper>
         <Movie movie={movie} />
-      </SectionWrapper>
+      </div>
 
-      <SectionWrapper>
+      <div className={s["link-container"]}>
         <NavLink
+          className={s.link}
+          activeClassName={s.active}
           to={{
             pathname: `${url}/cast`,
             state: { from: location.state?.from },
@@ -82,6 +98,8 @@ const MovieDetails = () => {
           Cast
         </NavLink>
         <NavLink
+          className={s.link}
+          activeClassName={s.active}
           to={{
             pathname: `${url}/reviews`,
             state: { from: location.state?.from },
@@ -89,7 +107,7 @@ const MovieDetails = () => {
         >
           Reviews
         </NavLink>
-      </SectionWrapper>
+      </div>
 
       <RoutsForMovie />
     </>

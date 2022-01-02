@@ -1,7 +1,41 @@
+.navigation {
+  margin: 10px 70px;
+  position: fixed;
+  padding: 15px;
+  width: 200px;
+  font-family: "Indie Flower", cursive;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--accent-color);
+}
+
 .link {
-  color: green;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  color: var(--secondary-text-color);
+}
+.link:not(:last-child) {
+  margin-right: 20px;
+}
+.link:hover,
+.link:focus {
+  position: relative;
+}
+
+.link:hover::after {
+  position: absolute;
+  content: "";
+  left: 0px;
+  bottom: 10px;
+  width: 100%;
+  height: 4px;
+
+  border-radius: 2px;
+
+  background-color: var(--accent-color);
 }
 
 .active {
-  color: red;
+  color: var(--accent-color);
 }

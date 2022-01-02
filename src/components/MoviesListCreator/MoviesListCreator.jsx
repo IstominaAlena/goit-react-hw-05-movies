@@ -49,8 +49,8 @@ const MoviesListCreator = ({ array }) => {
             />
           )}
           <h2 className={s.title}>{title}</h2>
-          <p className={s.rating}>Rating: {vote_average}</p>
-          <p className={s.genres}>Genres: {genresList}</p>
+          <p className={s.rating}>{vote_average}</p>
+          <p className={s.genres}>{genresList}</p>
         </Link>
       </li>
     );

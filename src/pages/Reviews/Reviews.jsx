@@ -44,7 +44,7 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <SectionWrapper>
+    <>
       {status === "pending" && <h1>Loading...</h1>}
 
       {status === "rejected" && <Error error={error} />}
@@ -53,7 +53,7 @@ const Reviews = () => {
       ) : (
         <p className={s.text}>Sorry, there isn't any reviews</p>
       )}
-    </SectionWrapper>
+    </>
   );
 };
 export default Reviews;

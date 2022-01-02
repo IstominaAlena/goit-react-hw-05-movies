@@ -46,12 +46,12 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <SectionWrapper>
+    <>
       {status === "pending" && <h1>Loading...</h1>}
 
       {status === "rejected" && <Error error={error} />}
       <CastListCreator array={cast} />
-    </SectionWrapper>
+    </>
   );
 };
 export default Cast;

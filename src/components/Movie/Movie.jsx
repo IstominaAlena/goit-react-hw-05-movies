@@ -13,18 +13,19 @@ const Movie = ({ movie }) => {
   const imgUrl = movieAPI.getPoster(200, poster_path);
 
   return (
-    <>
+    <div className={s["movie-card"]}>
       {poster_path ? (
         <img src={imgUrl} alt={title} className={s.poster} />
       ) : (
         <CustomPlaceholder width={200} height={300} text="Poster not found" />
       )}
-
-      <Title title={title} />
-      <span>{release_date}</span>
-      <p>{tagline}</p>
-      <p>{overview}</p>
-    </>
+      <div className={s["movie-info"]}>
+        <Title title={title} />
+        <p className={s.tagline}>{tagline}</p>
+        <p className={s.overview}>{overview}</p>
+        <span className={s.release}>({release_date})</span>
+      </div>
+    </div>
   );
 };
 export default Movie;

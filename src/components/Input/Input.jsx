@@ -45,7 +45,6 @@ export default Input;
 
 Input.defaultProps = {
   type: "text",
-  // placeholder: undefined,
   autoFocus: false,
 };
 

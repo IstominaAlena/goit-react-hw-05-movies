@@ -12,19 +12,17 @@ const Reviews = lazy(() =>
 
 const RoutsForMovie = () => {
   return (
-    <SectionWrapper>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Switch>
-          <Route path="/movies/:movieId/cast">
-            <Cast />
-          </Route>
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <Switch>
+        <Route path="/movies/:movieId/cast">
+          <Cast />
+        </Route>
 
-          <Route path="/movies/:movieId/reviews">
-            <Reviews />
-          </Route>
-        </Switch>
-      </Suspense>
-    </SectionWrapper>
+        <Route path="/movies/:movieId/reviews">
+          <Reviews />
+        </Route>
+      </Switch>
+    </Suspense>
   );
 };
 export default RoutsForMovie;

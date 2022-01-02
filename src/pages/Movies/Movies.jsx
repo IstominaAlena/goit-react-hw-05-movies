@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import SectionWrapper from "../../components/SectionWrapper";
 import SearchForm from "../../components/SearchForm";
 import MoviesListCreator from "../../components/MoviesListCreator";
 import Button from "../../components/Button";
@@ -84,8 +83,9 @@ const Movies = () => {
     }));
   }
   return (
-    <SectionWrapper>
+    <>
       <SearchForm onSubmit={formSubmitHandler} />
+
       {status === "pending" && <h1>Loading...</h1>}
 
       {status === "rejected" && <Error error={error} />}
@@ -100,11 +100,11 @@ const Movies = () => {
         />
       )}
       {page === totalPages && status === "resolved" && (
-        <p className="text">
+        <p className={s.text}>
           We're sorry, but you've reached the end of search results.
         </p>
       )}
-    </SectionWrapper>
+    </>
   );
 };
 

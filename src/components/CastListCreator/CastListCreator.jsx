@@ -11,14 +11,14 @@ const CastListCreator = ({ array }) => {
   const items = array.map(({ id, name, profile_path, character }) => {
     const imgUrl = movieAPI.getPoster(200, profile_path);
     return (
-      <li key={id}>
+      <li key={id} className={s.item}>
         {profile_path ? (
           <img src={imgUrl} alt={name} className={s.profile} />
         ) : (
           <CustomPlaceholder width={200} height={300} text="Photo not found" />
         )}
-        <h2>{name}</h2>
-        <p>{character}</p>
+        <h2 className={s.name}>{name}</h2>
+        <p className={s.character}>{character}</p>
       </li>
     );
   });

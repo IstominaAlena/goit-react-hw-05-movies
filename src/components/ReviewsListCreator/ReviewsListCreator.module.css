@@ -1,0 +1,26 @@
+.list {
+  max-width: 1000px;
+  margin: auto;
+
+  padding: 20px;
+  list-style-type: square;
+  color: var(--accent-color);
+}
+
+.item:not(:last-child) {
+  margin-bottom: 20px;
+}
+.item:nth-child(2n) {
+  background-color: var(--secondary-background-color);
+}
+
+.author {
+  margin-bottom: 10px;
+  font-family: "Indie Flower", cursive;
+  font-size: 20px;
+  color: var(--accent-color);
+}
+
+.content {
+  color: var(--secondary-text-color);
+}

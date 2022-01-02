@@ -1,0 +1,39 @@
+.search {
+  border-radius: 50% 50%;
+  padding: 0;
+  height: 24px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.search:hover,
+.search:focus,
+.go-back:hover,
+.go-back:focus {
+  border-color: var(--accent-color);
+}
+
+.load-more {
+  margin-top: 20px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+
+  border-radius: 5px;
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background-color: #fff;
+}
+
+.go-back {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50% 50%;
+  padding: 0;
+  width: 26px;
+  border-color: transparent;
+  background-color: transparent;
+}

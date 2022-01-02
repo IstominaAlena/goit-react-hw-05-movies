@@ -1,0 +1,36 @@
+.movie-card {
+  display: flex;
+  justify-content: center;
+  padding: 15px 20px;
+}
+
+.poster {
+  width: 300px;
+  margin-right: 20px;
+}
+
+.movie-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 600px;
+  padding: 15px;
+}
+
+.tagline {
+  align-self: center;
+  margin-bottom: 20px;
+  font-family: "Caveat", cursive;
+  font-size: 25px;
+  color: var(--secondary-text-color);
+}
+.overview {
+  margin-bottom: 10px;
+  font-size: 30px;
+  color: var(--secondary-text-color);
+}
+
+.release {
+  font-size: 12px;
+  align-self: flex-end;
+}

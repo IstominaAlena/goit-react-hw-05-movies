@@ -1,0 +1,38 @@
+.container {
+  position: relative;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.link-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 80px;
+  left: 50px;
+}
+
+.link {
+  font-family: "Indie Flower", cursive;
+  font-size: 20px;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  color: var(--secondary-text-color);
+}
+
+.link:not(:last-child) {
+  margin-right: 20px;
+}
+
+.link:hover,
+.link:focus {
+  color: var(--accent-color);
+}
+
+.active {
+  color: var(--accent-color);
+}

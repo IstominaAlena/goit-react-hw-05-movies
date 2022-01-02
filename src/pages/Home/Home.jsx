@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 // import PropTypes from "prop-types";
 
-import SectionWrapper from "../../components/SectionWrapper";
 import Title from "../../components/Title";
 import MoviesListCreator from "../../components/MoviesListCreator";
 
@@ -41,10 +40,10 @@ const Home = () => {
   }, []);
 
   return (
-    <SectionWrapper>
+    <>
       <Title title={"Trending today"} />
       <MoviesListCreator array={movies} />
-    </SectionWrapper>
+    </>
   );
 };
 

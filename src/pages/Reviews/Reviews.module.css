@@ -1,0 +1,5 @@
+.text {
+  font-family: "Caveat", cursive;
+  text-align: center;
+  color: var(--accent-color);
+}
