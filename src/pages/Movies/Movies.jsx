@@ -36,21 +36,13 @@ const Movies = () => {
         if (!result.data.results.length) {
           toast.error("Sorry we can't find anything");
         }
-        // setState((prev) => ({
-        //   ...state,
-        //   movies: [...prev.movies, ...result.data.results],
-        //   page: result.data.page,
-        //   status: "resolved",
-        //   totalPages: result.data.total_pages,
-        // }));
-
-        setState({
+        setState((prev) => ({
           ...state,
-          movies: [...result.data.results],
+          movies: [...prev.movies, ...result.data.results],
           page: result.data.page,
           status: "resolved",
           totalPages: result.data.total_pages,
-        });
+        }));
       } catch (error) {
         setState({
           ...state,
@@ -69,6 +61,11 @@ const Movies = () => {
   }, [location.search, page]);
 
   function formSubmitHandler(searchQuery) {
+    setState({
+      ...state,
+      movies: [],
+      page: 1,
+    });
     history.push({
       pathname: location.pathname,
       search: `q=${searchQuery}`,
