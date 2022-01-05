@@ -1,8 +1,9 @@
+import { ToastContainer } from "react-toastify";
+
 import Header from "./components/Header";
 import MainRouts from "./components/Routs/MainRouts";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
+import "react-toastify/dist/ReactToastify.css";
 import "./styles/App.css";
 
 function App() {

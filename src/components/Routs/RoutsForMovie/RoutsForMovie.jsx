@@ -1,7 +1,9 @@
 import { lazy, Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 
-import SectionWrapper from "../../SectionWrapper";
+import Spinner from "../../Spinner"
+
+
 
 const Cast = lazy(() =>
   import("../../../pages/Cast" /* webpackChunkName: "cast-page" */)
@@ -12,7 +14,7 @@ const Reviews = lazy(() =>
 
 const RoutsForMovie = () => {
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
+    <Suspense fallback={<Spinner />}>
       <Switch>
         <Route path="/movies/:movieId/cast">
           <Cast />

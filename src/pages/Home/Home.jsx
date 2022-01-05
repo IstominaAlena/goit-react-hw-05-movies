@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-// import PropTypes from "prop-types";
 
 import Title from "../../components/Title";
 import MoviesListCreator from "../../components/MoviesListCreator";
+import Error from "../../components/Error";
+import Spinner from "../../components/Spinner";
 
 import { movieAPI } from "../../servicesAPI/movieAPI";
-// import s from "./Home.module.css";
 
 const Home = () => {
   const [state, setState] = useState({
@@ -41,6 +41,9 @@ const Home = () => {
 
   return (
     <>
+      {status === "pending" && <Spinner />}
+      {status === "rejected" && <Error error={error} />}
+
       <Title title={"Trending today"} />
       <MoviesListCreator array={movies} />
     </>

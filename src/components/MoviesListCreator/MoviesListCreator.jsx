@@ -64,10 +64,10 @@ MoviesListCreator.propTypes = {
   array: PropTypes.arrayOf(
     PropTypes.shape({
       poster_path: PropTypes.string,
-      genre_ids: PropTypes.arrayOf(PropTypes.number).isRequired,
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      vote_average: PropTypes.number.isRequired,
+      genre_ids: PropTypes.arrayOf(PropTypes.number),
+      id: PropTypes.number,
+      title: PropTypes.string,
+      vote_average: PropTypes.number,
     })
   ),
 };

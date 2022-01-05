@@ -25,3 +25,14 @@ const CastListCreator = ({ array }) => {
   return <ul className={s.list}>{items}</ul>;
 };
 export default memo(CastListCreator);
+
+CastListCreator.propType={
+  array: PropTypes.arrayOf(
+    PropTypes.shape({
+      profile_path: PropTypes.string,
+      id: PropTypes.number,
+      name: PropTypes.string,
+      character: PropTypes.string,
+    })
+  ),
+}

@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
 import { CustomPlaceholder } from "react-placeholder-image";
 
 import { movieAPI } from "../../servicesAPI/movieAPI";
@@ -29,3 +28,13 @@ const Movie = ({ movie }) => {
   );
 };
 export default Movie;
+Movie.propTypes={
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string,
+    id: PropTypes.number,
+    title: PropTypes.string,
+    overview: PropTypes.string,
+    release_date: PropTypes.string,
+    tagline: PropTypes.string,
+  })
+}

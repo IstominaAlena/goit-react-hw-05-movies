@@ -2,6 +2,8 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { IconContext } from "react-icons";
 import { BsFillEyeFill } from "react-icons/bs";
+import PropTypes from "prop-types";
+
 
 import Title from "../../components/Title";
 import Input from "../Input";
@@ -9,7 +11,7 @@ import Button from "../Button";
 
 import s from "./SearchForm.module.css";
 
-const SearchForm = (props) => {
+const SearchForm = ({onSubmit}) => {
   const [query, setQuery] = useState("");
 
   function onInputChange(e) {
@@ -23,7 +25,7 @@ const SearchForm = (props) => {
       toast.warn("Please, enter your request");
     }
 
-    props.onSubmit(query);
+    onSubmit(query);
     setQuery("");
   }
 
@@ -56,3 +58,6 @@ const SearchForm = (props) => {
   );
 };
 export default SearchForm;
+SearchForm.propTypes={
+  onSubmit:PropTypes.func
+}

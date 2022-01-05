@@ -14,3 +14,14 @@ const ReviewsListCreator = ({ array }) => {
   return <ul className={s.list}>{items}</ul>;
 };
 export default memo(ReviewsListCreator);
+
+ReviewsListCreator.propTypes={
+  array: PropTypes.arrayOf(
+    PropTypes.shape({
+      profile_path: PropTypes.string,
+      id: PropTypes.number,
+      author: PropTypes.string,
+      content: PropTypes.string,
+    })
+  ),
+}

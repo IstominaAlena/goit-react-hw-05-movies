@@ -12,6 +12,8 @@ import { IoArrowUndoOutline } from "react-icons/io5";
 import Movie from "../../components/Movie";
 import RoutsForMovie from "../../components/Routs/RoutsForMovie";
 import Button from "../../components/Button";
+import Error from "../../components/Error";
+import Spinner from "../../components/Spinner"
 
 import { movieAPI } from "../../servicesAPI/movieAPI";
 
@@ -65,7 +67,9 @@ const MovieDetails = () => {
 
   return (
     <>
-      {status === "pending" && <h1>Loading...</h1>}
+      {status === "pending" && <Spinner />}
+      {status === "rejected" && <Error error={error} />}
+
       <div className={s.container}>
         <Button
           type="button"

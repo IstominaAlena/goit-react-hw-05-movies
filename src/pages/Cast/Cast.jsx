@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import PropTypes from "prop-types";
 
-import SectionWrapper from "../../components/SectionWrapper";
 import CastListCreator from "../../components/CastListCreator";
 import Error from "../../components/Error";
+import Spinner from "../../components/Spinner"
 
 import { movieAPI } from "../../servicesAPI/movieAPI";
-
-import s from "./Cast.module.css";
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -47,9 +44,9 @@ const Cast = () => {
 
   return (
     <>
-      {status === "pending" && <h1>Loading...</h1>}
-
+      {status === "pending" && <Spinner />}
       {status === "rejected" && <Error error={error} />}
+
       <CastListCreator array={cast} />
     </>
   );

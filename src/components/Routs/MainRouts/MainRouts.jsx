@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import SectionWrapper from "../../SectionWrapper";
+import Spinner from "../../Spinner"
 
 const Home = lazy(() =>
   import("../../../pages/Home" /* webpackChunkName: "home-page" */)
@@ -18,7 +19,7 @@ const MovieDetails = lazy(() =>
 const MainRouts = () => {
   return (
     <SectionWrapper>
-      <Suspense fallback={<h1>Loading...</h1>}>
+      <Suspense fallback={<Spinner />}>
         <Switch>
           <Route path="/" exact>
             <Home />

@@ -6,6 +6,7 @@ import SearchForm from "../../components/SearchForm";
 import MoviesListCreator from "../../components/MoviesListCreator";
 import Button from "../../components/Button";
 import Error from "../../components/Error";
+import Spinner from "../../components/Spinner"
 
 import { movieAPI } from "../../servicesAPI/movieAPI";
 
@@ -83,8 +84,7 @@ const Movies = () => {
     <>
       <SearchForm onSubmit={formSubmitHandler} />
 
-      {status === "pending" && <h1>Loading...</h1>}
-
+      {status === "pending" && <Spinner />}
       {status === "rejected" && <Error error={error} />}
 
       {movies.length > 0 && <MoviesListCreator array={movies} />}

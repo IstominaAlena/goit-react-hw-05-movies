@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import SectionWrapper from "../../components/SectionWrapper";
 import ReviewsListCreator from "../../components/ReviewsListCreator";
 import Error from "../../components/Error";
-
-import PropTypes from "prop-types";
+import Spinner from "../../components/Spinner"
 import { movieAPI } from "../../servicesAPI/movieAPI";
 
 import s from "./Reviews.module.css";
+
 const Reviews = () => {
   const { movieId } = useParams();
   const [state, setState] = useState({
@@ -45,10 +44,10 @@ const Reviews = () => {
 
   return (
     <>
-      {status === "pending" && <h1>Loading...</h1>}
-
+       {status === "pending" && <Spinner />}
       {status === "rejected" && <Error error={error} />}
-      {reviews.length > 0 ? (
+
+      {reviews.length > 0 || status === "pending" ? (
         <ReviewsListCreator array={reviews} />
       ) : (
         <p className={s.text}>Sorry, there isn't any reviews</p>
