@@ -13,7 +13,7 @@ const Movie = ({ movie }) => {
 
   return (
     <div className={s["movie-card"]}>
-      {poster_path ? (
+      {movie || poster_path ? (
         <img src={imgUrl} alt={title} className={s.poster} />
       ) : (
         <CustomPlaceholder width={200} height={300} text="Poster not found" />
