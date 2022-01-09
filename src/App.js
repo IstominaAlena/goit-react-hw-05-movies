@@ -1,7 +1,7 @@
 import { ToastContainer } from "react-toastify";
 
 import Header from "./components/Header";
-import MainRouts from "./components/Routs/MainRouts";
+import MainRouts from "./components/Routs/MainRoutes";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./styles/App.css";

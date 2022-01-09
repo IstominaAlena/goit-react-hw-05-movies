@@ -1,7 +1,7 @@
 import axios from "axios";
 import { fetchingDataAPI } from "./fetchingDataAPI";
 
-const imgURL = fetchingDataAPI.imgURL;
+const {imgURL }= fetchingDataAPI;
 
 const instance = axios.create({
   baseURL: fetchingDataAPI.baseURL,
